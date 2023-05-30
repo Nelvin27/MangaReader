@@ -7,7 +7,7 @@ const path = require('path');
 const filess = [];
 
 
-const url = "C:/Users/Metaverse Technology/Pictures/ai/AI Generated/New folder";
+const url = "C:/Users/Metaverse Technology/AppData/Local/Tachidesk/downloads/Mangakakalot (EN)";
 
 fs.readdir(url,
   { withFileTypes: true },
@@ -25,11 +25,51 @@ fs.readdir(url,
       })
 
       filess.forEach((file, index) => {
-        var img = document.createElement("img");
-        img.src = path.join(url, file.name);
-        var src = document.getElementById("picHere");
-        src.appendChild(img);
-        img.onclick = function() {alert(file.name)};
+        const div = document.createElement('div');
+        div.classList.add('content-homepage-item');
+
+
+        const a = document.createElement('a');
+        a.classList.add('tooltip', 'item-img', 'bookmark_check');
+        a.dataset.tooltip = 'sticky_43828';
+        a.dataset.id = 'NDM4Mjg=';
+        a.rel = 'nofollow';
+        a.href = path.join("mangaDetails.html/?title=", file.name);
+        a.title = file.name;
+
+        document.getElementById("new-content").appendChild(div);
+
+        const img = document.createElement('img');
+        img.classList.add('img-loading');
+        img.alt = file.name;
+        img.src = path.join(url, file.name,'cover.jpg');
+
+        const em = document.createElement('em');
+        em.classList.add('item-rate');
+        em.textContent = '3.5';
+
+        a.appendChild(img);
+        a.appendChild(em);
+
+        const divRight = document.createElement('div');
+        divRight.classList.add('content-homepage-item-right');
+
+        const h3 = document.createElement('h3');
+        h3.classList.add('item-title');
+
+        const a2 = document.createElement('a');
+        a2.classList.add('tooltip', 'a-h', 'text-nowrap');
+        a2.dataset.tooltip = 'sticky_43828';
+        a2.href = path.join("mangaDetails.html/?title=", file.name);
+        a2.title = file.name;
+        a2.textContent = file.name;
+
+        h3.appendChild(a2);
+        divRight.appendChild(h3);
+
+        div.appendChild(a)
+        div.appendChild(divRight);
+        
       });
 
     }

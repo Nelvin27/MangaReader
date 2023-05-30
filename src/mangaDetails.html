@@ -3,28 +3,24 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="robots" content="index,follow" />
-    <title>Manganato Clone Website</title>
-    <meta name="description" content="Clone of MangaNato Website" />
-    <meta name="keywords" itemprop="keywords"
-        content="read manga online, read manga, manga online, manga online free, free manga, manga reader, manga scans, manga raw, manga, manhwa, manhua, manganato, manganato.com, manganato.com" />
-    <meta name="copyright" content="No Copyright © 2019 MangaNato" />
-    <meta name="Author" content="Me :>" />
+    <meta name="viewport" content="width=device-width">
+    <link id = "chapterLink" rel="canonical" href="https://manganato.com/manga-qu993729">
+    <meta name="robots" content="index,follow">
+    <title id="chapterTitle">Chapter Title</title>
 
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png" />
-    <link rel="stylesheet" href="c-style.css" />
-    <link rel="stylesheet" href="owl.theme.css" />
-    <link rel="stylesheet" href="owl.carousel.css" />
-    <link rel="stylesheet" href="tooltip.css" />
-    <link rel="stylesheet" href="c-style-search.css" />
-    <link href='css.css' rel='stylesheet' />
-    <link rel="stylesheet" href="style.css" />
 
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png" />
+    <link rel="stylesheet" href="../c-style.css" />
+    <link rel="stylesheet" href="../owl.theme.css" />
+    <link rel="stylesheet" href="../owl.carousel.css" />
+    <link rel="stylesheet" href="../tooltip.css" />
+    <link rel="stylesheet" href="../c-style-search.css" />
+    <link href='../css.css' rel='stylesheet' />
+    <link rel="stylesheet" href="../style.css" />
+ 
     <style class="mode-dark">
         body {
             background: #5a5454;
@@ -53,10 +49,6 @@
         .panel-nonlogin-history .nonlogin-history-item,
         .panel-nonlogin-full .nonlogin-full-item {
             background: #3e3e3e;
-        }
-
-        .user-bookmark-content .user-bookmark-item {
-            background: #3e3e3e !important;
         }
 
         .container-header-top .box-search .search-story,
@@ -97,16 +89,6 @@
         .panel-nonlogin-full .nonlogin-full-item .item-right a,
         .panel-nonlogin-full .nonlogin-full-item {
             color: #d0d0d0;
-        }
-
-        .user-bookmark-content .user-bookmark-item .user-bookmark-item-right .bm-title a,
-        .user-bookmark-content .user-bookmark-item a {
-            color: #d0d0d0 !important;
-        }
-
-        .bookmark-content .bm-ct-loading {
-            background: #3e3e3e !important;
-            color: #bdbdbd !important;
         }
 
         .container-header .header-menu {
@@ -156,6 +138,11 @@
             color: #bdbdbd;
         }
 
+        .panel-content-homepage .content-homepage-more,
+        .panel-newest .panel-newest-more {
+            background: #2b2b2b;
+        }
+
         .container-header-top .box-user-options .user-name {
             background: #3e776b;
         }
@@ -171,7 +158,7 @@
         }
 
         #panel-description-linear i {
-            background: url(https://manganato.com/themes/hm/images/linear_gradient_dark.png);
+            background: url(../images/linear_gradient_dark.png);
             height: 15px;
         }
 
@@ -210,17 +197,16 @@
             }
         }
     </style>
-
-    <script src="javascript.js"></script>
-    <script src="filebrowser.js"></script>
+    
+    
 </head>
 
 <body>
     <div class="body-site">
         <div class="container container-header">
             <div class="logo">
-                <a href="#" title="Manga Online">
-                    <img src="logo.png" alt="Manga Online" title="Manga Online">
+                <a href="../index.html" title="Manga Online">
+                    <img src="../logo.png" alt="Manga Online" title="Manga Online">
                 </a>
             </div>
             <div class="container-header-top">
@@ -232,50 +218,93 @@
                             <ul></ul>
                             <div id="search-footer" class="searchf"></div>
                         </div>
+                        <div id="SearchResult">
+                            <ul></ul>
+                            <div id="search-footer" class="searchf"></div>
+                        </div>
                         <input style="display: none;">
                     </form>
                     <script>
-                        //$search_address = baseurljs + 'search/story/';
+                        //$search_address = baseurljs + 'https://manganato.com/search/story/';
                     </script>
                 </div>
                 <div class="box-user-options">
-                    <a rel="nofollow" href="#" class="user-login">Login</a>
-                    <a rel="nofollow" href="#" class="user-register">Register</a>
+                    <a rel="nofollow" href="#"
+                        class="user-login">Login</a>
+                    <a rel="nofollow" href="#"
+                        class="user-register">Register</a>
                     <i class="mode-changer"></i>
                 </div>
             </div>
 
         </div>
+
         <div class="container container-main">
             <div class="container-main-left">
 
-                <div class="panel-content-homepage">
-                    <h1 class="content-homepage-title">Manga List:</h1>
-                    
-                    <div id="new-content"></div>
-
+                <div class="panel-breadcrumb">
+                    <a class="a-h" href="../index.html" title="Read Manga Online">Read Manga Online</a>
+                    <span>»</span>
+                    <a id="breadcrumbTitle"></a>
                 </div>
+                <div class="panel-story-info">
+                    <div class="story-info-left">
+
+                        <span class="info-image">
+                            <img id="imageCover" class="img-loading" src=""
+                                alt="" title="">
+                        </span>
+
+                    </div>
+
+
+                    <div class="story-info-right">
+                        <h1 id="chapterTitle2"></h1>
+
+
+                    </div>
+                    
+                </div>
+
+                <div class="panel-story-chapter-list">
+                    <p class="row-title-chapter" style="width: calc(100% - 17px);">
+                        <span class="row-title-chapter-name">Chapter name</span>
+                        <span class="row-title-chapter-view">View</span>
+                        <span class="row-title-chapter-time">Uploaded</span>
+                    </p>
+                    <ul id="chapters" class="row-content-chapter">
+                
+
+                    </ul>
+                </div>
+
+
             </div>
 
         </div>
         <div class="container container-footer">
             <div class="container-footer-content">
                 <div class="pn-hot-link">
-                    <a class="a-h text-nowrap" rel="nofollow" href="https://manganato.com/z-privacy-policy.html">Privacy
+                    <a class="a-h text-nowrap" rel="nofollow" href="#">Privacy
                         Policy</a>
-                    <a class="a-h text-nowrap" rel="nofollow" href="https://manganato.com/z-terms-conditions.html">Terms
+                    <a class="a-h text-nowrap" rel="nofollow" href="#">Terms
                         Conditions</a>
 
                 </div>
                 <div class="pn-contacts">
                     <h4>About Us</h4>
                     <p>Email : manganelo.net@gmail.com</p>
-                    <p id="timenow">Current Time is May 29,2023 - 10:50:17 AM</p>
+                    <p>Current Time is May 30,2023 - 22:57:12 PM</p>
                 </div>
             </div>
         </div>
-
     </div>
-</body>
 
+
+    <div id="top" style="display: none;">Back to Top</div>
+
+
+    <div id="top">Back to Top</div>
+</body>
+<script src="../mangaDetails.js"></script>
 </html>
