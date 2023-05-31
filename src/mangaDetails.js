@@ -39,7 +39,7 @@ document.getElementById("imageCover").title = newTitle; // ^
 
 document.getElementById("chapterTitle2").innerHTML = newTitle; //title header
 
-
+/*
 fs.readdir(chapterpath,
     { withFileTypes: true },
     (err, files) => {
@@ -47,6 +47,7 @@ fs.readdir(chapterpath,
         if (err)
             console.log(err);
         else {
+
 
 
             files.forEach(file => {
@@ -60,7 +61,8 @@ fs.readdir(chapterpath,
                 }
 
             })
-            
+
+            sessionStorage.setItem("chapters", JSON.stringify(chapters));
 
             chapters.forEach((file, index) => {
                 //console.log(file);
@@ -70,7 +72,7 @@ fs.readdir(chapterpath,
                 const a = document.createElement('a');
                 a.rel = 'nofollow';
                 a.classList.add('chapter-name', 'text-nowrap');
-                a.href = path.join("mangaChapter.html/?chapter=", file.name);
+                a.href = path.join("../mangaChapter.html/?chapter=", file.name, "&title=", newTitle);
                 a.title = file.name;
                 a.textContent = file.name;
 
@@ -84,6 +86,48 @@ fs.readdir(chapterpath,
         }
     })
 
-    
+*/
+var dir = path.join(url, newTitle, '\\');
+
+
+var files = fs.readdirSync(dir);
+files.sort(function (a2, b2) {
+    return fs.statSync(dir + a2).mtime.getTime() -
+        fs.statSync(dir + b2).mtime.getTime();
+});
+
+console.log(files);
+
+sessionStorage.setItem("chapters", JSON.stringify(files));
+
+files.forEach((file, index) => {
+    if (file == 'cover.jpg') {
+
+    }
+    else {
+        //console.log(file);
+        const li = document.createElement('li');
+        li.classList.add('a-h');
+
+        const a = document.createElement('a');
+        a.rel = 'nofollow';
+        a.classList.add('chapter-name', 'text-nowrap');
+        a.href = path.join("../mangaChapter.html/?chapter=", file, "&title=", newTitle);
+        a.title = file;
+        a.textContent = file;
+
+        li.appendChild(a);
+
+        document.getElementById("chapters").appendChild(li);
+    }
+
+
+
+
+});
+
+
+
+
 
 
