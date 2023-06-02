@@ -9,11 +9,13 @@ if (require('electron-squirrel-startup')) {
 
 const createWindow = () => {
   // Create the browser window.
+  let zoomLevel = 0;
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1366,
+    height: 768,
     webPreferences: {
-      contextIsolation: true,
+      enableRemoteModule: true,
+      contextIsolation: false,
       nodeIntegration: true,
       preload: path.join(__dirname, 'preload.js'),
     },
@@ -22,9 +24,24 @@ const createWindow = () => {
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
+  // Create the zoom in button click event
+  ipcMain.on('zoom-in', () => {
+    zoomLevel += 0.5; // Increment the zoom level
+    mainWindow.webContents.setZoomLevel(zoomLevel);
+  });
+
+  // Create the zoom out button click event
+  ipcMain.on('zoom-out', () => {
+    zoomLevel -= 0.5; // Decrement the zoom level
+    mainWindow.webContents.setZoomLevel(zoomLevel);
+  });
+
+
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
+
 };
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -38,15 +55,6 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
-});
-
-ipcMain.on("saveText", (event,txtVal) => {
-  fs.writeFile("c:\\mangareadertest.txt",txtVal.toString(), (err) => {
-    if(!err) {console.log("File Written");}
-    else {
-      console.log(err);
-    }
-  });
 });
 
 app.on('activate', () => {

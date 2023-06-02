@@ -18,7 +18,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "dialog": "^0.3.1",
+    "electron-squirrel-startup": "^1.0.0",
+    "git-filter-repo": "^0.0.30"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.1.1",
