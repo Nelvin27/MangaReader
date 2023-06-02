@@ -13,7 +13,11 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 1366,
     height: 768,
+    width: 1366,
+    height: 768,
     webPreferences: {
+      enableRemoteModule: true,
+      contextIsolation: false,
       enableRemoteModule: true,
       contextIsolation: false,
       nodeIntegration: true,
