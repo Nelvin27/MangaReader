@@ -5,9 +5,10 @@ const { log } = require('console');
 
 
 const url = "C:/Users/Metaverse Technology/Downloads/Manga";
+const chapters = [];
 const chapterPicture = [];
 
-chapters = JSON.parse(sessionStorage.getItem("chapters"));
+//chapters = JSON.parse(sessionStorage.getItem("chapters"));
 
 const queryString = window.location.search;
 
@@ -56,6 +57,41 @@ a3.title = newChapter;
 
 document.getElementById("breadcrumbChapter").appendChild(a3); //breadcrumbs
 document.getElementById("breadcrumbChapter2").appendChild(a4); //breadcrumbs
+
+
+var dir = path.join(url, newTitle, '\\');
+
+var files = fs.readdirSync(dir);
+
+/*
+files.sort(function (a2, b2) {
+    return fs.statSync(dir + a2).mtime.getTime() -
+        fs.statSync(dir + b2).mtime.getTime();
+});
+*/
+files.sort(function(a, b) {
+  const fileNumberA = parseInt((a.match(/\d+/) || [])[0]);
+  const fileNumberB = parseInt((b.match(/\d+/) || [])[0]);
+
+  return fileNumberA - fileNumberB; // Sort by number in ascending order
+});
+
+
+
+files.forEach((file, index) => {
+    const fileExtension = file.split('.').pop();
+
+    // List of ignored file extensions
+    const ignoredExtensions = ['jpg', 'jpeg', 'png', 'gif', 'txt'];
+    
+    // Check if the file extension is in the ignoredExtensions array
+    if (ignoredExtensions.includes(fileExtension.toLowerCase())) {
+      // File is an image or text file, ignore it
+    } else {
+      chapters.push(file);
+    }
+});
+
 
 /*
 chapters.forEach((file, index) => {

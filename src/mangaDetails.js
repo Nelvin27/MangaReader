@@ -97,10 +97,20 @@ var dir = path.join(url, newTitle, '\\');
 
 
 var files = fs.readdirSync(dir);
+
+/*
 files.sort(function (a2, b2) {
     return fs.statSync(dir + a2).mtime.getTime() -
         fs.statSync(dir + b2).mtime.getTime();
 });
+*/
+files.sort(function(a, b) {
+  const fileNumberA = parseInt((a.match(/\d+/) || [])[0]);
+  const fileNumberB = parseInt((b.match(/\d+/) || [])[0]);
+
+  return fileNumberA - fileNumberB; // Sort by number in ascending order
+});
+
 
 
 files.forEach((file, index) => {

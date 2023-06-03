@@ -1,5 +1,3 @@
-const { shell, dialog } = require('electron');
-const { log } = require('console');
 const fs = require('fs');
 const path = require('path');
 
@@ -52,12 +50,7 @@ fs.readdir(url,
         };
         img.src = path.join(url, file.name,'cover.jpg');
 
-        const em = document.createElement('em');
-        em.classList.add('item-rate');
-        em.textContent = '3.5';
-
         a.appendChild(img);
-        a.appendChild(em);
 
         const divRight = document.createElement('div');
         divRight.classList.add('content-homepage-item-right');
@@ -84,4 +77,4 @@ fs.readdir(url,
   })
 
 
-
+  
