@@ -4,6 +4,8 @@ const path = require('path');
 
 const filess = [];
 
+let popupIndex = 0;
+
 
 const url = "C:/Users/Metaverse Technology/Downloads/Manga";
 
@@ -46,9 +48,15 @@ fs.readdir(url, { withFileTypes: true }, (err, files) => {
             const imageUrl2 = path.join(url, file.name,'cover.jpg');
 
             const bookDiv = document.createElement('div');
-            bookDiv.classList.add('book');
+            bookDiv.classList.add('book','popup');
             bookDiv.onclick = function() {
                 bookClicked(path.join("mangaDetails.html/?title=", file.name));
+            };
+            bookDiv.onmouseover = function() {
+                miniPopup(index);
+            };
+            bookDiv.onmouseout = function() {
+                miniPopup(index);
             };
 
             if (fs.existsSync(imageUrl2)) {
@@ -57,7 +65,20 @@ fs.readdir(url, { withFileTypes: true }, (err, files) => {
                 bookDiv.style.setProperty('--bg-image', "url('./images/404_not_found.png')");
             }
 
+            const popupSpan = document.createElement('span');
+            popupSpan.classList.add("popuptext");
+            popupSpan.innerHTML = file.name;
+            popupSpan.setAttribute('id', `myPopup${popupIndex}`);
+            bookDiv.appendChild(popupSpan);
+
             div2.appendChild(bookDiv);
+            popupIndex++;
         });
     }
 });
+
+// When the user clicks on <div>, open the popup
+        function miniPopup(index) {
+          var popup = document.getElementById(`myPopup${index}`);
+          popup.classList.toggle("show");
+        }
